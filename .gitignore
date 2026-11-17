@@ -1,0 +1,10 @@
+results/
+private/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.sqlite*
+*.zip
+*.key
+*.pem
