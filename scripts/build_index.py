@@ -6,10 +6,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = {'quick': '快速检查与日常任务', 'visual': '视觉、图形与整活', 'agent': 'Agent、博弈与长任务', 'standard': '成熟 benchmark 与专项能力'}
 TAGS = {'priority': '★ 回归优先', 'supporting': '△ 辅助观察', 'exclude': '— 不入核心回归'}
+ENTRY_TYPES = {'evaluation-suite', 'regression-bank', 'evaluation-script'}
 
 
 def render(data):
-    lines = ['# 全部测评索引', '', '由 `data/benchmarks.json` 生成。★ 是固定条件重复测试的优先候选，不代表一道题就能证明降智。状态与来源核验状态分开。', '']
+    lines = ['# 全部测评索引', '', '核心仅收录 AI 能力评测集、回归测试题库及评测执行／检查脚本；不收录终端信息流、个人浏览器插件等无关工具。创意与未核实线索见 [候补文档](docs/IDEAS.md)，收录标准见 [贡献指南](CONTRIBUTING.md)。', '', '由 `data/benchmarks.json` 生成。★ 是固定条件重复测试的优先候选，不代表一道题就能证明降智。状态与来源核验状态分开。', '']
     for group, title in GROUPS.items():
         lines += [f'<a id="{group}"></a>', '', '## ' + title, '', '| 测试／来源 | 测什么、怎么玩 | 如何判分 | 回归用途 | 门槛／当前状态 |', '| --- | --- | --- | --- | --- |']
         for e in data['benchmarks']:
@@ -25,13 +26,16 @@ def validate(data):
     entries = data['benchmarks']
     ids = [e['id'] for e in entries]
     assert len(ids) == len(set(ids)), 'Duplicate IDs'
-    required = {'id', 'name', 'category', 'ability', 'scoring', 'regression', 'regressionNote', 'burden', 'status', 'sourceUrl', 'sourceReview', 'licenseNote'}
+    required = {'id', 'name', 'category', 'ability', 'scoring', 'regression', 'regressionNote', 'burden', 'status', 'sourceUrl', 'sourceReview', 'licenseNote', 'entryType', 'inclusionEvidence'}
     for e in entries:
         assert required <= e.keys(), e['id']
         assert e['category'] in GROUPS and e['regression'] in TAGS, e['id']
         assert e['sourceUrl'].startswith('https://'), e['id']
         assert e['sourceReview'] in {'reviewed-primary', 'historical-lead', 'original-proposal', 'local-public-source'}, e['id']
         assert e['licenseNote'], e['id']
+        assert e['entryType'] in ENTRY_TYPES, e['id']
+        assert isinstance(e['inclusionEvidence'], str) and e['inclusionEvidence'].strip(), e['id']
+        assert e['sourceReview'] != 'original-proposal', e['id']
     assert len(entries) >= 40
     assert any(e['regression'] == 'priority' for e in entries)
     return len(entries)

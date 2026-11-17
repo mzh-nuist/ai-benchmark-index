@@ -2,9 +2,13 @@
 
 **把成熟 benchmark、中文日常题和整活玩法放进一张能用的目录。重点找出模型是不是真的“不如以前好用”。**
 
-[★ 先看降智检查](docs/REGRESSION.md) · [全部 66 项](INDEX.md) · [16 道自有题与评分](docs/OWN-TESTS.md) · [原始来源核查](research/primary-sources.md) · [ModelTest 网站与答卷](https://modeltest.cc/)
+[★ 先看降智检查](docs/REGRESSION.md) · [全部 60 项](INDEX.md) · [16 道自有题与评分](docs/OWN-TESTS.md) · [原始来源核查](research/primary-sources.md) · [ModelTest 网站与答卷](https://modeltest.cc/)
 
-收录 **16 道自有公开测试＋6 套自有历史／专项目录＋44 个外部基准、玩法或原创候选**。这里既有 IFEval、GSM-Symbolic、BFCL、SWE-bench，也有羊圈诈骗、三仙归洞、推老板、鹈鹕、AI 后厨和小卖部。不是权威排行榜，不给没有实测的项目编分数。
+收录 **16 道自有公开测试＋5 套自有历史／专项测试目录＋39 个外部评测项目**。这里既有 IFEval、GSM-Symbolic、BFCL、SWE-bench，也有羊圈诈骗、三仙归洞、推老板、鹈鹕、AI 后厨和小卖部。不是权威排行榜，不给没有实测的项目编分数。
+
+## 收录边界
+
+核心索引只收录 AI 能力评测集、回归测试题库与评测执行／检查脚本。终端信息流、个人浏览器插件和无关效率工具不收录；纯创意、资料框架与待核实线索留在[候补文档](docs/IDEAS.md)，按[贡献指南](CONTRIBUTING.md)审核后才能进入核心。
 
 ## 我就想知道 AI 有没有变笨，先看什么？
 
@@ -33,7 +37,7 @@
 
 ```text
 INDEX.md                       按方向分类的完整中文索引
-data/benchmarks.json            66项机器可读目录
+data/benchmarks.json            60项机器可读目录
 data/modeltest-tasks.json       16道公开原题、参考与评分字段
 docs/OWN-TESTS.md               能直接阅读的原题和判分说明
 docs/REGRESSION.md              降智回归检查方法与排错顺序
@@ -41,7 +45,7 @@ docs/IDEAS.md                   原创改编与待核实线索
 docs/PROVENANCE.md              来源、许可、状态和边界
 research/primary-sources.md     16项成熟来源的逐项核查
 templates/                     单次记录与前后比较模板
-scripts/                       搜索、生成与离线校验
+scripts/                       搜索、生成、离线校验与可用性检查
 ```
 
 自有题来自 [ModelTest 公开源码](https://github.com/mzh-nuist/modeltest) 的固定快照，保留原题、参考、评分与来源摘要。原网站里的模型成绩仍留在原项目；新一期开发题与已采集旧题分开标记。这个索引本轮新增模型调用 **0 次**。
@@ -59,6 +63,8 @@ python scripts/search.py 记忆
 python scripts/build_index.py --check
 python scripts/validate.py
 ```
+
+正式测试前先按[前置环境诊断](docs/REGRESSION.md)检查模型标识、接入状态和服务策略；目录查询通过不等于推理可用或底层身份已证实。
 
 修改 `data/benchmarks.json` 后，运行 `python scripts/build_index.py` 更新 Markdown。CI 只做离线验证，不调用被测模型。
 

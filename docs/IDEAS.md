@@ -15,4 +15,17 @@
 
 吸血鬼送外卖、僵尸赶高铁、外星通缉令、幽灵群聊、办公室谈判等是早期场景方向；狼人排班、机器人维修、怪物合租和外星纪要已有独立公开开发题，见 [自有题库](OWN-TESTS.md)。相似想法不重复包装为多个成熟 benchmark。
 
-SpaceChem 仅保留为候补：长期工厂／编程规划和本站短题目标不同，另一对话未能充分打开原站，本轮没有运行或核验其成绩。来源入口见总索引。
+SpaceChem 仅保留为候补：长期工厂／编程规划和本站短题目标不同，另一对话未能充分打开原站，本轮没有运行或核验其成绩。来源：[SpaceChem](https://spacechem.wincon.dev/)。
+
+## 核心索引外的参考与待完善材料
+
+下列材料仍有参考价值，但目前是创意、社区展示、一般数学题或方法框架；须补齐AI测试题库／执行与判分入口后才进入核心索引。
+
+| 材料 | 原入口 | 移出原因 |
+| --- | --- | --- |
+| 烤肉切片：旋转与状态守恒 | [来源](https://www.reddit.com/r/LocalLLaMA/comments/1ua1na0/whats_more_impressive_glm_51_52_or_qwen_35_36/) | 社区动画展示及原创扩展，未形成固定评测集 |
+| 非传递骰子：后选反而占优 | [来源](https://nrich.maths.org/problems/non-transitive-dice) | 一般数学来源与中文候选题，未形成AI回归题库 |
+| 原创：AI传话事故 | [来源](https://github.com/mzh-nuist/ai-benchmark-index/blob/main/docs/IDEAS.md) | 原创多模态传话方案，未实现题库和评分器 |
+| 原创：鹈鹕修车厂 | [来源](https://github.com/mzh-nuist/ai-benchmark-index/blob/main/docs/IDEAS.md) | 原创修车方案，尚未形成统一测试实现 |
+| SpaceChem：工厂与程序规划候补 | [来源](https://spacechem.wincon.dev/) | 原站任务与判分入口未充分核实 |
+| ModelTest 25项能力体系 | [来源](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/framework.json) | 25项指标方法框架，属于参考说明而非题库或执行脚本 |

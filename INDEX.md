@@ -1,5 +1,7 @@
 # 全部测评索引
 
+核心仅收录 AI 能力评测集、回归测试题库及评测执行／检查脚本；不收录终端信息流、个人浏览器插件等无关工具。创意与未核实线索见 [候补文档](docs/IDEAS.md)，收录标准见 [贡献指南](CONTRIBUTING.md)。
+
 由 `data/benchmarks.json` 生成。★ 是固定条件重复测试的优先候选，不代表一道题就能证明降智。状态与来源核验状态分开。
 
 <a id="quick"></a>
@@ -19,7 +21,6 @@
 | [外星人会议：谁又替同事答应了？](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/playful-season.json) | 冲突材料整合、版本优先级、证据引用、未知信息保留 | 按冻结criteria/gates；参考解见公开任务包 | ★ 回归优先：开发题，需先校准难度与评分；不同协议分开 | 轻至中：约束问答；已有公开题面，未采集模型成绩；local-public-source |
 | [推老板进工位](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/short-challenges.json) | 不可逆动作、多步规划 | 模拟每步合法性、终态、步数；不是比对参考串 | ★ 回归优先：两张固定地图可回归，但题少应补变体 | 轻：短问答／素材另备；已有公开实测；本轮未重跑；local-public-source |
 | [齿轮诈骗：能否转动与最小修复](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/short-challenges.json) | 拒绝不可行前提、图约束纠错 | 正反例；转向二分图、驱动连通、最少删边 | ★ 回归优先：含能转与不能转对照，避免一律否定 | 轻：短问答／素材另备；已有公开实测；本轮未重跑；local-public-source |
-| [非传递骰子：后选反而占优](https://nrich.maths.org/problems/non-transitive-dice) | 概率枚举、非传递关系 | 枚举36点数组合；示例胜率5/9 | ★ 回归优先：经典题污染风险，新骰面先验算 | 轻至中：素材／评分准备另核；未在本仓库实测；historical-lead |
 
 <a id="visual"></a>
 
@@ -42,9 +43,6 @@
 | [WaldoBench：找摸鱼鹈鹕灵感](https://waldobench.com/) | 视觉搜索、多属性定位 | 坐标落目标框；目标缺失另测 | ★ 回归优先：原创动物图尚未制作；固定裁切／工具 | 轻至中：素材／评分准备另核；未在本仓库实测；historical-lead |
 | [中文整活提示词合集](https://github.com/karminski/awesome-llm-benchmark-prompts) | 物理画面、动画、多约束生成 | 逐题冻结量表；合集本身不是统一评分基准 | △ 辅助观察：区分只给目标和完整技术指导 | 轻至中：素材／评分准备另核；未在本仓库实测；reviewed-primary |
 | [玩具车跑步机淘汰赛](https://github.com/karminski/awesome-llm-benchmark-prompts/blob/main/instruction/prompt-car-crash.md) | 碰撞、多部件约束、画面稳定性 | 检查穿模、轮子作用、速度改变；需自建量表 | △ 辅助观察：物理逼真与好看分别评 | 轻至中：素材／评分准备另核；未在本仓库实测；historical-lead |
-| [烤肉切片：旋转与状态守恒](https://www.reddit.com/r/LocalLLaMA/comments/1ua1na0/whats_more_impressive_glm_51_52_or_qwen_35_36/) | 动画、局部变化、状态一致性 | 原创加题：切片后肉柱减薄、盘子加一片 | △ 辅助观察：社区线索，尚无统一客观评分器 | 轻至中：素材／评分准备另核；未在本仓库实测；historical-lead |
-| [原创：AI传话事故](https://github.com/mzh-nuist/ai-benchmark-index/blob/main/docs/IDEAS.md) | 角色、动作、因果信息保留 | 每棒按固定事实表核对丢失／新增 | △ 辅助观察：多模态、多模型混杂需控制 | 轻至中：素材／评分准备另核；未在本仓库实测；original-proposal |
-| [原创：鹈鹕修车厂](https://github.com/mzh-nuist/ai-benchmark-index/blob/main/docs/IDEAS.md) | 定点维修、避免无关重画 | 同一坏图与冻结连接量表，前后对照 | △ 辅助观察：设计阶段，未实现统一评分器 | 轻至中：素材／评分准备另核；未在本仓库实测；original-proposal |
 
 <a id="agent"></a>
 
@@ -65,7 +63,6 @@
 | [DuoCook：一模型指挥双厨师](https://arxiv.org/html/2610.31511v1) | 并行规划、资源冲突 | 按论文订单／合法动作等规则 | △ 辅助观察：未核到完整可运行包，只索引论文 | 重：环境与多轮预算另核；未在本仓库实测；historical-lead |
 | [Overcooked-Bench：四人后厨](https://www.turinggames.ai/evals/overcooked-bench) | 多Agent协作与私人记忆 | 按项目规则；先核环境和运行入口 | △ 辅助观察：未确认开源runner，不称一键可跑 | 重：环境与多轮预算另核；未在本仓库实测；historical-lead |
 | [QUACK：鹅鸭杀](https://github.com/New-Ground-AI/QUACK) | 局部信息、记忆、博弈、证词一致性 | 日志核对行动和胜负；策略撒谎不一律扣分 | △ 辅助观察：可先看公开回放，重跑成本未知 | 重：环境与多轮预算另核；未在本仓库实测；historical-lead |
-| [SpaceChem：工厂与程序规划候补](https://spacechem.wincon.dev/) | 长期程序规划 | 原站未充分核读，不转述二手分数 | — 不入核心回归：仅候补，不列已核验可复现 | 重：环境与多轮预算另核；未在本仓库实测；historical-lead |
 
 <a id="standard"></a>
 
@@ -92,6 +89,5 @@
 | [ModelTest 核心24题试点](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/core.json) | 内容、输出合同与完整交付 | 18自动／6人工；未校准区分度 | △ 辅助观察：规则与人工分开，不当已验证强模型基准 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
 | [ModelTest Challenge V2公开开发集](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/challenge.json) | 数学、编码、推理、中文等候选任务 | 内容0–100、格式、严格交付分开 | △ 辅助观察：72项目录仅24道公开开发题，封存48项只有元数据 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
 | [ModelTest 速度／TPS协议](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/runner/measurement.py) | 正文TPS、首内容／首正文／完整耗时 | 检查可靠usage、块边界和最小采样条件 | — 不入核心回归：速度变化不是降智；推理token不能当正文 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
-| [ModelTest 25项能力体系](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/dist/data/framework.json) | 能力、性能、成本与可靠性指标方法 | 逐项方法与实现状态，不是统一满分题库 | △ 辅助观察：并发、pass@1等未接入不冒充已测 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
 | [ModelTest 三道长输出采样题](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/datasets/speed_tasks.json) | 持续输出及传输速度 | 按测量协议，不按chunk数量估token | — 不入核心回归：只做速度采样，不能判能力退化 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
 | [ModelTest 历史30题起步集](https://github.com/mzh-nuist/modeltest/blob/6b745dbc5fcd8627b9b3fe2f45acdf41561619fb/datasets/tasks.json) | 多方向基础任务与人工项 | exact／contains／JSON／人工待评 | △ 辅助观察：历史开发材料，难度未校准 | 按子集与协议；费用未测；公开历史／方法目录；本轮未运行；local-public-source |
